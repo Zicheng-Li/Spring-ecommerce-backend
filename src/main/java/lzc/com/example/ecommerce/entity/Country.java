@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 @Entity
 @Table(name = "country")
 @Getter
@@ -20,5 +22,6 @@ public class Country {
     @Column(name = "name")
     private String name;
 
-    // TODO: add one-to-many relationship
+    @OneToMany(mappedBy = "country")
+    private List<State> states;
 }
