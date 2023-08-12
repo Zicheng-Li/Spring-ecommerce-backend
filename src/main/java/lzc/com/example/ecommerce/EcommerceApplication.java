@@ -11,3 +11,4 @@ public class EcommerceApplication {
 	}
 
 }
+// spring have pagination out of box, by default will pass 20 elements
