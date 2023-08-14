@@ -1,10 +1,17 @@
 package lzc.com.example.ecommerce.service;
 
+import jakarta.transaction.Transactional;
 import lzc.com.example.ecommerce.dao.CustomerRepository;
 import lzc.com.example.ecommerce.dto.Purchase;
 import lzc.com.example.ecommerce.dto.PurchaseResponse;
+import lzc.com.example.ecommerce.entity.Customer;
+import lzc.com.example.ecommerce.entity.Order;
+import lzc.com.example.ecommerce.entity.OrderItem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Set;
+import java.util.UUID;
 
 @Service
 public class CheckoutServiceImpl implements CheckoutService{
@@ -16,7 +23,30 @@ public class CheckoutServiceImpl implements CheckoutService{
     }
 
     @Override
+    @Transactional
     public PurchaseResponse placeOrder(Purchase purchase) {
-        return null;
+        // retrieve the order info from dto
+        Order order = purchase.getOrder();
+        // generate tracking number
+        String trackingNumber = generateTrackingNumber(order);
+        order.setOrderTrackingNumber(trackingNumber);
+        // populate order with orderItems
+        Set<OrderItem> orderItems = purchase.getOrderItems();
+        orderItems.forEach(orderItem ->order.add(orderItem));
+        // populate order with billingAddress and shippingAddress
+        order.setBillingAddress(purchase.getBillingAddress());
+        order.setAddress(purchase.getShippingAddress());
+        // populate customer with order
+        Customer customer = purchase.getCustomer();
+        customer.add(order);
+        // save to the database
+        customerRepository.save(customer);
+        // return a response
+        return new PurchaseResponse(trackingNumber);
+    }
+
+    private String generateTrackingNumber(Order order) {
+        // generate a random UUID number (UUID version-4)
+        return UUID.randomUUID().toString();
     }
 }
