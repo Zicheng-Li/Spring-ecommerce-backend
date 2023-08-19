@@ -2,10 +2,7 @@ package lzc.com.example.ecommerce.config;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.metamodel.EntityType;
-import lzc.com.example.ecommerce.entity.Country;
-import lzc.com.example.ecommerce.entity.Product;
-import lzc.com.example.ecommerce.entity.ProductCategory;
-import lzc.com.example.ecommerce.entity.State;
+import lzc.com.example.ecommerce.entity.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
@@ -39,6 +36,7 @@ public class MyDataRestConfig implements RepositoryRestConfigurer {
         disableHttpMethod(ProductCategory.class, config, theUnsupportedActions);
         disableHttpMethod(Country.class, config, theUnsupportedActions);
         disableHttpMethod(State.class, config, theUnsupportedActions);
+        disableHttpMethod(Order.class, config, theUnsupportedActions);
 
         // call internal helper method
         exposeIds(config);
