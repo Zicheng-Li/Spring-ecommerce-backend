@@ -38,6 +38,12 @@ public class CheckoutServiceImpl implements CheckoutService{
         order.setAddress(purchase.getShippingAddress());
         // populate customer with order
         Customer customer = purchase.getCustomer();
+        // check if this is an existing customer
+        String theEmail = customer.getEmail();
+        Customer existingCustomer = customerRepository.findByEmail(theEmail);
+        if (existingCustomer != null){
+            customer = existingCustomer;
+        }
         customer.add(order);
         // save to the database
         customerRepository.save(customer);

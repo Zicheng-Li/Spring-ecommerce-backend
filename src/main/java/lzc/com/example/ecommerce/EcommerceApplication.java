@@ -9,6 +9,5 @@ public class EcommerceApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(EcommerceApplication.class, args);
 	}
-
 }
 // spring have pagination out of box, by default will pass 20 elements
