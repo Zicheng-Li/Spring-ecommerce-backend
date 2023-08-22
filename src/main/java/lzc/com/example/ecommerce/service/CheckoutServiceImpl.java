@@ -65,6 +65,8 @@ public class CheckoutServiceImpl implements CheckoutService{
         params.put("amount", info.getAmount());
         params.put("currency", info.getCurrency());
         params.put("payment_method_types", paymentMethodsTypes);  // not payment_method_type, it is payment_method_types
+        params.put("description", "my testing card description");
+        params.put("receipt_email", info.getReceiptEmail());
         return PaymentIntent.create(params);
     }
 
