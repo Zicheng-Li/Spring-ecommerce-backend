@@ -2,7 +2,7 @@
 
 This repository contains the backend code for EL's Online Shop, developed using SpringBoot 3.
 
-## Frontend Repository: [Spring-ecommerce-backend](https://github.com/Zicheng-Li/Angular-ecommerce-frontend)
+## Frontend Repository: [Spring-ecommerce-frontend](https://github.com/Zicheng-Li/Angular-ecommerce-frontend)
 
 ## Features: [Link to Demo Video](https://youtu.be/q0_N9ydf67c)
 
