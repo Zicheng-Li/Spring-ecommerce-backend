@@ -25,7 +25,7 @@ This repository contains the backend code for EL's Online Shop, developed using 
 1. Clone this repository, please use IntelliJ for best experience.
 2. Navigate to the project directory.
 3. Update the `application.properties` file with your database credentials.
-4. Add secret key for stripe and change server port to 8443
+4. Add secret key for stripe and change server port to 8443 in the `application.properties` file.
 
     ```bash
     server.port=8443
@@ -33,7 +33,7 @@ This repository contains the backend code for EL's Online Shop, developed using 
     ```
 5. Run `mvn clean install` to build the project.
 6. Click on the start button to start the server.
-7. The server will start on `http://localhost:8080/`.
+7. The server will start on `http://localhost:8443/`.
 
 ## Contributing
 
