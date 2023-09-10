@@ -22,12 +22,18 @@ This repository contains the backend code for EL's Online Shop, developed using 
 
 ## Installation
 
-1. Clone this repository.
+1. Clone this repository, please use IntelliJ for best experience.
 2. Navigate to the project directory.
 3. Update the `application.properties` file with your database credentials.
-4. Run `mvn clean install` to build the project.
-5. Run `mvn spring-boot:run` to start the server.
-6. The server will start on `http://localhost:8080/`.
+4. Add secret key for stripe and change server port to 8443
+
+    ```bash
+    server.port=8443
+    stripe.key.secret=YOUR_SECRET_KEY
+    ```
+5. Run `mvn clean install` to build the project.
+6. Click on the start button to start the server.
+7. The server will start on `http://localhost:8080/`.
 
 ## Contributing
 
